@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api Get data</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Si no</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Age</th>
+            <th>Job</th>
+            <th>Distric</th>
+            <th>State</th>
+            <th>Pincode</th>
+        </tr>
+        <tr>
+            <tbody id="data">
+            
+        </tr>
+    </tbody>
+    </table>
+    <script>
+        fetch("http://localhost/Calculator/views/firstapi.php").then(
+  res => {
+    res.json().then(
+      data => {
+        console.log(data);
+        if (data.length > 0) {
+
+          var temp = "";
+          data.forEach((Students) => {
+            temp += "<tr>";
+            temp += "<td>" + Students.id + "</td>";
+            temp += "<td>" + Students.name + "</td>";
+            temp += "<td>" + Students.address + "</td>";
+            temp+="<td>"   +   Students.age+"</td>";
+            temp+="<td>"  +Students.job+"</td>";
+            temp+="<td>" + Students.distric +"</td>";
+            temp+="<td>" +Students.state +"</td>";
+            temp+="<td>" + Students.pincode +"</td>";
+          });
+          document.getElementById('data').innerHTML = temp;
+        }
+      }
+    )
+  }
+)
+    </script>
+</body>
+</html>

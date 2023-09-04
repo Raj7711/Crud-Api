@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="card">
+      <h5 class="card-header">Featured</h5>
+      <div class="card-body">
+        <div class="container mt-5">
+          <p id="msg"></p>
+          <form method="post" id="userForm">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                id="name"
+                placeholder="Enter your name.."
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Age</label>
+              <input
+                type="text"
+                class="form-control"
+                name="age"
+                id="age"
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Job</label>
+              <input
+                type="text"
+                class="form-control"
+                name="job"
+                id="job"
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Distric</label>
+              <input
+                type="text"
+                class="form-control"
+                name="distric"
+                id="distric"
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">State</label>
+              <input
+                type="text"
+                class="form-control"
+                name="state"
+                id="state"
+                aria-describedby="emailHelp"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label"
+                >Pincode</label
+              >
+              <input
+                type="text"
+                name="pincode"
+                id="pincode"
+                class="form-control"
+              />
+            </div>
+
+            <!-- <input type="submit" name="submit" id="save-button" /> -->
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <p id="demo"></p>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+    crossorigin="anonymous"
+  ></script>
+
+  <!-- <script src="form.js"></script>  -->
+  <script>
+    $(document).ready(function () {
+      $("button").click(function (e) {
+        e.preventDefault();
+        var sname = $("#name").val();
+        var sage = $("#age").val();
+        var sjob = $("#job").val();
+        var sdistric = $("#distric").val();
+        var sstate = $("#state").val();
+        var spincode = $("#pincode").val();
+
+        $.ajax({
+          url: "http://localhost/Calculator/views/insert.php",
+          method: "POST",
+          data: JSON.stringify({
+            name: sname,
+            age: sage,
+            job: sjob,
+            distric: sdistric,
+            state:sstate,
+            pincode: spincode,
+          }),
+          dataType: "html",
+
+          success: function (data) {
+            return window.location.replace("search1.html");
+
+          },
+        });
+      });
+    });
+  </script>
+</html>
